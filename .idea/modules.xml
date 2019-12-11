@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/data-collection.iml" filepath="$PROJECT_DIR$/data-collection.iml" />
+      <module fileurl="file://$PROJECT_DIR$/generate-schemacls/generate-schemacls.iml" filepath="$PROJECT_DIR$/generate-schemacls/generate-schemacls.iml" />
+      <module fileurl="file://$PROJECT_DIR$/merge-seqfile/merge-seqfile.iml" filepath="$PROJECT_DIR$/merge-seqfile/merge-seqfile.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mro-bean/mro-bean.iml" filepath="$PROJECT_DIR$/mro-bean/mro-bean.iml" />
+      <module fileurl="file://$PROJECT_DIR$/output-seqfile/output-seqfile.iml" filepath="$PROJECT_DIR$/output-seqfile/output-seqfile.iml" />
+    </modules>
+  </component>
+</project>

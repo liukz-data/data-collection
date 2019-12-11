@@ -1,0 +1,121 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <parent>
+    <artifactId>data-collection</artifactId>
+    <groupId>com</groupId>
+    <version>1.0</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>merge-seqfile</artifactId>
+  <packaging>jar</packaging>
+  <version>1.0</version>
+  <name>${project.artifactId}</name>
+  <description>My wonderfull scala app</description>
+  <inceptionYear>2019</inceptionYear>
+
+  <properties>
+    <spark.version>2.2.0-cdh6.0.1</spark.version>
+  </properties>
+
+  <!--
+<repositories>
+  <repository>
+    <id>scala-tools.org</id>
+    <name>Scala-Tools Maven2 Repository</name>
+    <url>http://scala-tools.org/repo-releases</url>
+  </repository>
+</repositories>
+
+<pluginRepositories>
+  <pluginRepository>
+    <id>scala-tools.org</id>
+    <name>Scala-Tools Maven2 Repository</name>
+    <url>http://scala-tools.org/repo-releases</url>
+  </pluginRepository>
+</pluginRepositories>
+-->
+  <dependencies>
+    <dependency>
+      <groupId>com</groupId>
+      <artifactId>generate-schemacls</artifactId>
+      <version>1.0</version>
+      <scope>system</scope>
+     <!-- <systemPath>${basedir}/../generate-schemacls/target/generate-schemacls-1.0.jar</systemPath>-->
+      <systemPath>${basedir}/libs/generate-schemacls-1.0.jar</systemPath>
+    </dependency>
+    <dependency>
+      <groupId>org.scala-lang</groupId>
+      <artifactId>scala-library</artifactId>
+    </dependency>
+    <!-- Spark 依赖-->
+    <dependency>
+      <groupId>org.apache.spark</groupId>
+      <artifactId>spark-core_2.11</artifactId>
+      <version>${spark.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.spark</groupId>
+      <artifactId>spark-sql_2.11</artifactId>
+      <version>${spark.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.spark</groupId>
+      <artifactId>spark-hive_2.11</artifactId>
+      <version>${spark.version}</version>
+    </dependency>
+    <!-- MySQL依赖 -->
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>5.1.38</version>
+    </dependency>
+    <!-- PgSql 依赖 -->
+    <dependency>
+      <groupId>org.postgresql</groupId>
+      <artifactId>postgresql</artifactId>
+      <version>42.2.5</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <sourceDirectory>src/main/scala</sourceDirectory>
+    <testSourceDirectory>src/test/scala</testSourceDirectory>
+ <!--   <pluginManagement>-->
+      <plugins>
+        <plugin>
+          <groupId>org.scala-tools</groupId>
+          <artifactId>maven-scala-plugin</artifactId>
+          <executions>
+            <execution>
+              <goals>
+                <goal>compile</goal>
+                <goal>testCompile</goal>
+              </goals>
+              <configuration>
+                <args>
+                  <arg>-dependencyfile</arg>
+                  <arg>${project.build.directory}/.scala_dependencies</arg>
+                </args>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <configuration>
+            <useFile>false</useFile>
+            <disableXmlReport>true</disableXmlReport>
+            <!-- If you have classpath issue like NoDefClassError,... -->
+            <!-- useManifestOnlyJar>false</useManifestOnlyJar -->
+            <includes>
+              <include>**/*Test.*</include>
+              <include>**/*Suite.*</include>
+            </includes>
+          </configuration>
+        </plugin>
+      </plugins>
+   <!-- </pluginManagement>-->
+  </build>
+</project>

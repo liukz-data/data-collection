@@ -1,0 +1,137 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <parent>
+    <artifactId>data-collection</artifactId>
+    <groupId>com</groupId>
+    <version>1.0</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>output-seqfile</artifactId>
+  <packaging>jar</packaging>
+  <version>1.0</version>
+  <name>${project.artifactId}</name>
+  <description>My wonderfull scala app</description>
+  <inceptionYear>2019</inceptionYear>
+
+  <properties>
+    <hadoop.version>3.0.0-cdh6.0.1</hadoop.version>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>com</groupId>
+      <artifactId>mro-bean</artifactId>
+      <version>1.0</version>
+      <scope>system</scope>
+      <systemPath>${basedir}/../mro-bean/target/mro-bean-1.0.jar</systemPath>
+    </dependency>
+    <dependency>
+      <groupId>com</groupId>
+      <artifactId>generate-schemacls</artifactId>
+      <version>1.0</version>
+      <scope>system</scope>
+      <systemPath>${basedir}/../generate-schemacls/target/generate-schemacls-1.0.jar</systemPath>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.hadoop</groupId>
+      <artifactId>hadoop-common</artifactId>
+      <version>${hadoop.version}</version>
+    </dependency>
+    <!-- 不添加 hadoop-hdfs-client 依赖，会出现 No FileSystem for scheme: hdfs 异常 -->
+    <dependency>
+      <groupId>org.apache.hadoop</groupId>
+      <artifactId>hadoop-hdfs-client</artifactId>
+      <version>${hadoop.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.scala-lang</groupId>
+      <artifactId>scala-library</artifactId>
+    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>org.scala-lang.modules</groupId>-->
+<!--      <artifactId>scala-xml_2.11</artifactId>-->
+<!--    </dependency>-->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <sourceDirectory>src/main/scala</sourceDirectory>
+    <testSourceDirectory>src/test/scala</testSourceDirectory>
+    <plugins>
+      <plugin>
+        <groupId>org.scala-tools</groupId>
+        <artifactId>maven-scala-plugin</artifactId>
+        <executions>
+          <execution>
+            <goals>
+              <goal>compile</goal>
+              <goal>testCompile</goal>
+            </goals>
+            <configuration>
+              <args>
+                <arg>-dependencyfile</arg>
+                <arg>${project.build.directory}/.scala_dependencies</arg>
+              </args>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <useFile>false</useFile>
+          <disableXmlReport>true</disableXmlReport>
+          <!-- If you have classpath issue like NoDefClassError,... -->
+          <!-- useManifestOnlyJar>false</useManifestOnlyJar -->
+          <includes>
+            <include>**/*Test.*</include>
+            <include>**/*Suite.*</include>
+          </includes>
+        </configuration>
+      </plugin>
+      <!-- <plugin>
+       <groupId>org.apache.maven.plugins</groupId>
+       <artifactId>maven-shade-plugin</artifactId>
+       <version>2.4.3</version>
+       <executions>
+         <execution>
+           <phase>package</phase>
+           <goals>
+             <goal>shade</goal>
+           </goals>
+           <configuration>
+             <filters>
+               <filter>
+                 <artifact>*:*</artifact>
+                 <excludes>
+                   <exclude>META-INF/*.SF</exclude>
+                   <exclude>META-INF/*.DSA</exclude>
+                   <exclude>META-INF/*.RSA</exclude>
+                 </excludes>
+               </filter>
+             </filters>
+             <transformers>
+               <transformer
+                       implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+               </transformer>
+             </transformers>
+           </configuration>
+         </execution>
+       </executions>
+     </plugin>
+     <plugin>
+       <groupId>org.apache.maven.plugins</groupId>
+       <artifactId>maven-compiler-plugin</artifactId>
+       <configuration>
+         <source>8</source>
+         <target>8</target>
+       </configuration>
+     </plugin>-->
+    </plugins>
+  </build>
+</project>

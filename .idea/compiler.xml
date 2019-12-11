@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="generate-schemacls" />
+        <module name="merge-seqfile" />
+        <module name="mro-bean" />
+        <module name="output-seqfile" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="data-collection" target="1.8" />
+      <module name="generate-schemacls" target="1.8" />
+      <module name="merge-seqfile" target="1.8" />
+      <module name="mro-bean" target="1.8" />
+      <module name="output-seqfile" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

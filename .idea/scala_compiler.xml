@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ScalaCompilerConfiguration">
+    <profile name="Maven 1" modules="mro-bean">
+      <parameters>
+        <parameter value="-dependencyfile" />
+        <parameter value="G:\Users\lkz\IdeaProjects\datacollection3\datacollection(2)\mro-bean\target/.scala_dependencies" />
+      </parameters>
+    </profile>
+    <profile name="Maven 2" modules="generate-schemacls">
+      <parameters>
+        <parameter value="-dependencyfile" />
+        <parameter value="G:\Users\lkz\IdeaProjects\datacollection3\datacollection(2)\generate-schemacls\target/.scala_dependencies" />
+      </parameters>
+    </profile>
+    <profile name="Maven 3" modules="output-seqfile">
+      <parameters>
+        <parameter value="-dependencyfile" />
+        <parameter value="G:\Users\lkz\IdeaProjects\datacollection3\datacollection(2)\output-seqfile\target/.scala_dependencies" />
+      </parameters>
+    </profile>
+    <profile name="Maven 4" modules="merge-seqfile">
+      <parameters>
+        <parameter value="-dependencyfile" />
+        <parameter value="G:\Users\lkz\IdeaProjects\datacollection3\datacollection(2)\merge-seqfile\target/.scala_dependencies" />
+      </parameters>
+    </profile>
+  </component>
+</project>
